@@ -15,7 +15,7 @@ To declare this handler, you need to know the bot token and the chat identifier(
 $handler = new \TelegramLog\TelegramHandler('<token>', '<chat_id>');
 ```
 
-## Using with laravel
+## Using with Laravel
 
 Add telegram channel to `config/logging.php`
 
@@ -46,7 +46,7 @@ class TelegramMessageFormatter implements TelegramMessageFormatterInterface
 {
     public function format(LogRecord $record, int $maxStackLine): string
     {
-        return [{$record->datetime->format('Y-m-d H:i:s')}] {$record->channel}.{$record->level->getName()}: {$record->message}";
+        return [{$record->datetime->format('Y-m-d H:i:s')}] {$record->message}";
     }
 }
 
