@@ -1,0 +1,46 @@
+{
+    "name": "congnv/monolog-telegram-handler",
+    "description": "Telegram Handler for Monolog.",
+    "keywords": ["monolog", "logging", "telegram"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Cong Nguyen",
+            "email": "congnv3030@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.1",
+        "ext-curl": "*",
+        "monolog/monolog": "^3.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.54",
+        "phpstan/phpstan": "^1.10.67"
+    },
+    "autoload": {
+        "psr-4": {
+            "TelegramLog\\": "src/"
+        }
+    },
+    "scripts": {
+        "cs-fix": [
+            "./vendor/bin/php-cs-fixer fix"
+        ],
+        "phpstan": [
+            "./vendor/bin/phpstan analyse"
+        ]
+    },
+    "scripts-descriptions": {
+        "cs-fix": "Run PHP CS Fixer to fix code style issues in your code.",
+        "phpstan": "Run PHPStan static analysis against your application."
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": false
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

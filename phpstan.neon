@@ -1,0 +1,6 @@
+parameters:
+    paths:
+        - src
+    # https://phpstan.org/user-guide/rule-levels
+    level: 9
+    checkGenericClassInNonGenericObjectType: false
