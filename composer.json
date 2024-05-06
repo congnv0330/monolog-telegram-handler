@@ -3,6 +3,10 @@
     "description": "Telegram Handler for Monolog.",
     "keywords": ["monolog", "logging", "telegram"],
     "license": "MIT",
+    "support": {
+        "issues": "https://github.com/congnv0330/monolog-telegram-handler/issues",
+        "source": "https://github.com/congnv0330/monolog-telegram-handler"
+    },
     "authors": [
         {
             "name": "Cong Nguyen",
