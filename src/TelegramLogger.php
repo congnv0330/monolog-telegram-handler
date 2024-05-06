@@ -18,23 +18,30 @@ class TelegramLogger
      *  chat_id: string,
      *  max_stack_line?: int,
      *  formatter?: class-string<TelegramMessageFormatterInterface>,
-     *  level?: Level,
-     *  bubble?: bool
+     *  level?: 'debug'|'info'|'notice'|'warning'|'error'|'critical'|'alert'|'emergency',
+     *  bubble?: bool,
      * } $config
      *
      * @return Logger
      */
     public function __invoke(array $config): Logger
     {
+        $botToken = $config['bot_token'];
+        $chatId = $config['chat_id'];
+
+        if (empty($botToken) || empty($chatId)) {
+            return new Logger('TelegramEmptyLogger');
+        }
+
         return new Logger(
             name: 'TelegramLogger',
             handlers: [
                 new TelegramHandler(
-                    botToken: $config['bot_token'],
-                    chatId: $config['chat_id'],
+                    botToken: $botToken,
+                    chatId: $chatId,
                     maxStackLine: $config['max_stack_line'] ?? 10,
                     messageFormatter: $config['formatter'] ?? TelegramMessageFormatter::class,
-                    level: $config['level'] ?? Level::Critical,
+                    level: Level::fromName($config['level'] ?? 'critical'),
                     bubble: $config['bubble'] ?? true,
                 ),
             ],

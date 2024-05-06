@@ -13,10 +13,12 @@ class TelegramMessageFormatter implements TelegramMessageFormatterInterface
      */
     public function format(LogRecord $record, int $maxStackLine): string
     {
+        $eol = PHP_EOL;
+
         /** @var string[] $content */
         $content = [];
 
-        $content[] = "[{$record->datetime->format('Y-m-d H:i:s')}] {$record->channel}.{$record->level->getName()}: {$record->message}\n";
+        $content[] = "[{$record->datetime->format('Y-m-d H:i:s')}] {$record->channel}.{$record->level->getName()}: {$record->message}{$eol}";
 
         /** @var \Exception $exception */
         $exception = $record->context['exception'];
@@ -24,7 +26,7 @@ class TelegramMessageFormatter implements TelegramMessageFormatterInterface
         $exceptionClass = get_class($exception);
 
         $content[] = "<strong>{$exceptionClass}</strong>";
-        $content[] = "<strong>File:</strong> {$exception->getFile()}:{$exception->getLine()}\n";
+        $content[] = "<strong>File:</strong> {$exception->getFile()}:{$exception->getLine()}{$eol}";
 
         $content[] = '<strong>Stack</strong>';
 
@@ -37,6 +39,6 @@ class TelegramMessageFormatter implements TelegramMessageFormatterInterface
 
         $content[] = '...';
 
-        return implode(PHP_EOL, $content);
+        return implode($eol, $content);
     }
 }

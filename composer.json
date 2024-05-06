@@ -36,10 +36,7 @@
         "phpstan": "Run PHPStan static analysis against your application."
     },
     "config": {
-        "sort-packages": true,
-        "allow-plugins": {
-            "pestphp/pest-plugin": false
-        }
+        "sort-packages": true
     },
     "minimum-stability": "dev",
     "prefer-stable": true
