@@ -25,10 +25,16 @@ class TelegramMessageFormatter implements TelegramMessageFormatterInterface
 
         $exceptionClass = get_class($exception);
 
-        $content[] = "<strong>{$exceptionClass}</strong>";
+        $content[] = "<strong>{$exceptionClass}</strong>{$eol}";
         $content[] = "<strong>File:</strong> {$exception->getFile()}:{$exception->getLine()}{$eol}";
 
-        $content[] = '<strong>Stack</strong>';
+        $content[] = '<strong>[Stack]</strong>';
+
+        $needSliceTrace = count($exception->getTrace()) > $maxStackLine;
+
+        $trace = $needSliceTrace
+            ? array_slice($exception->getTrace(), 0, $maxStackLine)
+            : $exception->getTrace();
 
         /** @var array{file: string, line: int}[] $trace */
         $trace = array_slice($exception->getTrace(), 0, $maxStackLine);
@@ -37,7 +43,9 @@ class TelegramMessageFormatter implements TelegramMessageFormatterInterface
             $content[] = "#{$index} {$line['file']}:{$line['line']}";
         }
 
-        $content[] = '...';
+        if ($needSliceTrace) {
+            $content[] = '...';
+        }
 
         return implode($eol, $content);
     }
