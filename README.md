@@ -26,6 +26,7 @@ Add telegram channel to `config/logging.php`
     'level' => env('LOG_LEVEL', 'debug'),
     'bot_token' => env('TELEGRAM_BOT_TOKEN'),
     'chat_id' => env('TELEGRAM_CHAT_ID'),
+    // 'max_stack_line' => 10,
 ],
 ```
 
@@ -62,5 +63,6 @@ Modify telegram channel
     'level' => env('LOG_LEVEL', 'debug'),
     'bot_token' => env('TELEGRAM_BOT_TOKEN'),
     'chat_id' => env('TELEGRAM_CHAT_ID'),
+    // 'max_stack_line' => 10,
 ],
 ```
