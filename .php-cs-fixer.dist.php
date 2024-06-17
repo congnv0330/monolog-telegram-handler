@@ -5,6 +5,8 @@ $finder = (new PhpCsFixer\Finder())
 
 return (new PhpCsFixer\Config())
     ->setRules([
-        '@PSR12' => true,
+        '@PER-CS2.0' => true,
+        'ordered_imports' => true,
+        'no_unused_imports' => true,
     ])
     ->setFinder($finder);

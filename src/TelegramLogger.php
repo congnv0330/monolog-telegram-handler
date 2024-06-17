@@ -6,7 +6,6 @@ namespace TelegramLog;
 
 use Monolog\Level;
 use Monolog\Logger;
-use TelegramLog\TelegramHandler;
 
 class TelegramLogger
 {
