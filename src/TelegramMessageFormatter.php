@@ -32,12 +32,10 @@ class TelegramMessageFormatter implements TelegramMessageFormatterInterface
 
         $needSliceTrace = count($exception->getTrace()) > $maxStackLine;
 
+        /** @var array{file: string, line: int}[] $trace */
         $trace = $needSliceTrace
             ? array_slice($exception->getTrace(), 0, $maxStackLine)
             : $exception->getTrace();
-
-        /** @var array{file: string, line: int}[] $trace */
-        $trace = array_slice($exception->getTrace(), 0, $maxStackLine);
 
         foreach ($trace as $index => $line) {
             $content[] = "#{$index} {$line['file']}:{$line['line']}";
